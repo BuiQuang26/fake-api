@@ -1,10 +1,12 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const port = process.env.PORT || 3000
 
 //parser body json
 app.use(express.json())
+app.use(cors);
 
 //fake data 
 const status = ["on", "off"]
