@@ -92,6 +92,18 @@ while (id < 1000) {
     id = id + 1;
 }
 
+app.get('/vehicles/100', (req, res) => {
+    console.log("client access")
+    // res.json({
+    //     // status: 'OK',
+    //     // message: 'get all vehicles successfully',
+    //     // data: vehicles
+    // })
+    res.status(200).json(vehicles.filter(vehicle => {
+        return vehicle.id < 100
+    }))
+})
+
 app.get('/vehicles/200', (req, res) => {
     console.log("client access")
     // res.json({
