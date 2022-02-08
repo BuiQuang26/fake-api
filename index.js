@@ -13,7 +13,7 @@ app.use(cors({
 //fake data 
 const status = ["on", "off"]
 const vehicle_hub = ["Cầu giấy", "Giải Phóng", "Long Biên", "Gia Lâm", "Ba Đình"]
-const vehicle_type = ["xe 1", "xe 2", "xe 3"]
+const vehicle_type = ["vehicle 1", "vehicle 2", "vehicle 3"]
 const history = [
     {
         id_hub: 112341,
@@ -92,14 +92,40 @@ while (id < 1000) {
     id = id + 1;
 }
 
-app.get('/vehicles', (req, res) => {
+app.get('/vehicles/200', (req, res) => {
     console.log("client access")
     // res.json({
     //     // status: 'OK',
     //     // message: 'get all vehicles successfully',
     //     // data: vehicles
     // })
-    res.status(200).json(vehicles)
+    res.status(200).json(vehicles.filter(vehicle => {
+        return vehicle.id < 200
+    }))
+})
+
+app.get('/vehicles/500', (req, res) => {
+    console.log("client access")
+    // res.json({
+    //     // status: 'OK',
+    //     // message: 'get all vehicles successfully',
+    //     // data: vehicles
+    // })
+    res.status(200).json(vehicles.filter(vehicle => {
+        return vehicle.id < 500
+    }))
+})
+
+app.get('/vehicles/100', (req, res) => {
+    console.log("client access")
+    // res.json({
+    //     // status: 'OK',
+    //     // message: 'get all vehicles successfully',
+    //     // data: vehicles
+    // })
+    res.status(200).json(vehicles.filter(vehicle => {
+        return vehicle.id < 1000
+    }))
 })
 
 app.listen(port, function () {
